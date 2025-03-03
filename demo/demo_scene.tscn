@@ -1,0 +1,251 @@
+[gd_scene load_steps=8 format=3 uid="uid://yulifnttjf33"]
+
+[ext_resource type="Script" path="res://addons/danikakes.spatial_audio_player_3d/demo/addons/freecam_3D/freecam.gd" id="1_m1axl"]
+[ext_resource type="Script" path="res://addons/danikakes.spatial_audio_player_3d/spatial_audio_player_3d.gd" id="2_kduea"]
+[ext_resource type="AudioStream" uid="uid://8n37r463ytwr" path="res://addons/danikakes.spatial_audio_player_3d/demo/demo_scene.oggvorbisstr" id="3_f67n7"]
+[ext_resource type="PackedScene" uid="uid://2jkx25ii82bd" path="res://addons/danikakes.spatial_audio_player_3d/demo/free_car_lowpoly2/FREE_CAR_01.fbx" id="4_6v3aj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bjeqy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5e1cj"]
+sky_material = SubResource("ProceduralSkyMaterial_bjeqy")
+
+[sub_resource type="Environment" id="Environment_l3r7k"]
+background_mode = 2
+sky = SubResource("Sky_5e1cj")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="DemoScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l3r7k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Freecam3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.643, 3.7591, 0)
+script = ExtResource("1_m1axl")
+
+[node name="Flat Ground With Windows" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8502, 0, -20.0182)
+
+[node name="SpatialAudioPlayer3D3" type="AudioStreamPlayer3D" parent="Flat Ground With Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.743637, 2.52581, -0.675856)
+stream = ExtResource("3_f67n7")
+attenuation_model = 2
+autoplay = true
+panning_strength = 1.5
+script = ExtResource("2_kduea")
+environment_update_frequency = 0.5
+camera_update_frequency = 0.01
+
+[node name="Label3D" type="Label3D" parent="Flat Ground With Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.843674, 4.08473, -0.487362)
+billboard = 1
+text = "Confined Space with Windows"
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Flat Ground With Windows"]
+use_collision = true
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(3.77367e-15, -8.63313e-08, -1.97503, -1.48083, -6.47292e-08, 0, -6.47292e-08, 1.48083, -6.47292e-08, -0.619545, -0.235582, -0.952818)
+use_collision = true
+size = Vector3(0.423324, 9.07556, 8.99326)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(3.77367e-15, -8.63313e-08, -1.97503, -1.48083, -6.47292e-08, 0, -6.47292e-08, 1.48083, -6.47292e-08, -0.619545, 6.17295, -0.952818)
+use_collision = true
+size = Vector3(0.423324, 9.07556, 8.99326)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-6.47291e-08, 0, -1.97503, 0, 1.48083, 0, 1.48083, 0, -8.63313e-08, -0.619545, 2.93952, 5.52712)
+use_collision = true
+size = Vector3(0.423324, 4.78729, 8.99326)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-6.47291e-08, 0, -1.97503, 0, 1.48083, 0, 1.48083, 0, -8.63313e-08, -0.619545, 2.93952, -7.78637)
+use_collision = true
+size = Vector3(0.423324, 4.78729, 8.99326)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-1.48083, 0, 1.72663e-07, 0, 1.48083, 0, -1.29458e-07, 0, -1.97503, 8.04102, 2.93952, -1.14429)
+use_collision = true
+size = Vector3(0.423324, 4.78729, 7.07241)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-1.48083, 0, 1.72663e-07, 0, 1.48083, 0, -1.29458e-07, 0, -1.97503, -9.3112, 2.93952, -1.14429)
+use_collision = true
+size = Vector3(0.423324, 4.78729, 7.07241)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-1.48083, 0, 1.72663e-07, 0, 1.48083, 0, -1.29458e-07, 0, -1.97503, -9.29873, 2.88218, -1.11841)
+operation = 2
+use_collision = true
+size = Vector3(1.33276, 2.57256, 3.87028)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-6.47291e-08, 0, -1.97503, 0, 1.48083, 0, 1.48083, 0, -8.63313e-08, -0.722984, 2.88218, 5.48347)
+operation = 2
+use_collision = true
+size = Vector3(1.33276, 2.57256, 6.58016)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-6.47291e-08, 0, -1.97503, 0, 1.48083, 0, 1.48083, 0, -8.63313e-08, -0.722984, 2.88218, -7.99274)
+operation = 2
+use_collision = true
+size = Vector3(1.33276, 2.57256, 6.58016)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Flat Ground With Windows/CSGCombiner3D"]
+transform = Transform3D(-1.48083, 0, 1.72663e-07, 0, 1.48083, 0, -1.29458e-07, 0, -1.97503, 8.18792, 2.88218, -1.11841)
+operation = 2
+use_collision = true
+size = Vector3(0.640373, 2.57256, 3.87028)
+
+[node name="FREE_CAR_02" parent="Flat Ground With Windows" instance=ExtResource("4_6v3aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16085, 0.0778532, -0.334305)
+
+[node name="Flat Ground" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.918, 0, -20.0182)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Flat Ground"]
+transform = Transform3D(3.77367e-15, -8.63313e-08, -1.97503, -1.48083, -6.47292e-08, 0, -6.47292e-08, 1.48083, -6.47292e-08, -0.619545, -0.235582, -0.952818)
+use_collision = true
+size = Vector3(0.423324, 9.07556, 8.99326)
+
+[node name="SpatialAudioPlayer3D3" type="AudioStreamPlayer3D" parent="Flat Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.711563, 2.52581, -0.675375)
+stream = ExtResource("3_f67n7")
+attenuation_model = 2
+unit_size = 10.43
+autoplay = true
+panning_strength = 1.5
+script = ExtResource("2_kduea")
+environment_update_frequency = 0.5
+camera_update_frequency = 0.01
+
+[node name="Label3D" type="Label3D" parent="Flat Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.843674, 4.08473, -0.487362)
+billboard = 1
+text = "Unconfined Space"
+
+[node name="FREE_CAR_01" parent="Flat Ground" instance=ExtResource("4_6v3aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.887573, 0.0778537, -0.218683)
+
+[node name="Small Confined Space" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2654, 0, -17.9433)
+
+[node name="SpatialAudioPlayer3D2" type="AudioStreamPlayer3D" parent="Small Confined Space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72424, 2.52581, 1.02352)
+stream = ExtResource("3_f67n7")
+attenuation_model = 2
+autoplay = true
+panning_strength = 1.5
+script = ExtResource("2_kduea")
+camera_update_frequency = 0.01
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Small Confined Space"]
+transform = Transform3D(0.93552, 0, 0, 0, 0.93552, 0, 0, 0, 0.93552, -1.85419, 0, -0.798483)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Small Confined Space/CSGCombiner3D"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.189703, 2.94345, 1.04336)
+use_collision = true
+size = Vector3(6.79367, 9.07556, 8.99326)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Small Confined Space/CSGCombiner3D"]
+transform = Transform3D(1.52677e-15, -3.49285e-08, -0.799071, -0.799071, -3.49285e-08, 0, -3.49285e-08, 0.799071, -3.49285e-08, -0.189703, 2.94345, 2.53096)
+operation = 2
+use_collision = true
+size = Vector3(6.79367, 8.78349, 8.99326)
+
+[node name="Label3D2" type="Label3D" parent="Small Confined Space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82144, 3.51896, 0.857664)
+billboard = 1
+text = "Small Confined Space"
+
+[node name="Label3D3" type="Label3D" parent="Small Confined Space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.685, 3.51896, 0.857664)
+billboard = 1
+text = "Large Confined Space"
+
+[node name="FREE_CAR_03" parent="Small Confined Space" instance=ExtResource("4_6v3aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06178, 0.214362, 0.9032)
+
+[node name="Large Confined Space" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5086, 0, -15.5669)
+
+[node name="SpatialAudioPlayer3D" type="AudioStreamPlayer3D" parent="Large Confined Space"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07175, 2.52581, -1.09578)
+stream = ExtResource("3_f67n7")
+attenuation_model = 2
+autoplay = true
+panning_strength = 1.5
+script = ExtResource("2_kduea")
+environment_update_frequency = 0.5
+camera_update_frequency = 0.01
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Large Confined Space"]
+transform = Transform3D(1.97503, 0, 0, 0, 1.48083, 0, 0, 0, 1.48083, -1.90026, 0.122369, -2.91778)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Large Confined Space/CSGCombiner3D2"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -0.189703, 2.94345, 1.04336)
+use_collision = true
+size = Vector3(6.79367, 9.07556, 8.99326)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Large Confined Space/CSGCombiner3D2"]
+transform = Transform3D(1.52677e-15, -3.49285e-08, -0.799071, -0.799071, -3.49285e-08, 0, -3.49285e-08, 0.799071, -3.49285e-08, -0.189703, 2.94345, 2.32999)
+operation = 2
+use_collision = true
+size = Vector3(6.79367, 9.28652, 8.99326)
+
+[node name="FREE_CAR_04" parent="Large Confined Space" instance=ExtResource("4_6v3aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10465, 0.461681, -0.778519)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -249.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Press Tab to toggle Free Camera"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Press Space to move up"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Press Shift to move down"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "WASD to move laterally"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Scroll Wheel to control speed"
+horizontal_alignment = 2
